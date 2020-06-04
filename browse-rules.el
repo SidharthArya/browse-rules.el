@@ -31,7 +31,7 @@
 
 ;;; Code:
 (require 'browse-url)
-(defcustom browse-rules '(("*" nil browse-url-default-browser "%s"))
+(defcustom browse-rules '((".*" nil browse-url-default-browser "%s"))
   "A set of rules to browse various urls.
 Each rule is a list of 4 elements.
 \('URL Regexp' 'External' 'Function/Program with arguments' 'Format String')

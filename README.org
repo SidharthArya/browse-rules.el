@@ -9,9 +9,9 @@ Make sure the folder containing browse-rules.el file is in your ~load-path~.
   (require 'browse-rules)
   (setq browse-rules '(
                                           ; "Regexp" external applicationorfunction format-string
-                                ("*" nil browse-url-default-browser "%s")
-                                ("*bbc*" t "firefox" "about:reader?url=%s")
-                                ("*gnu.org*" nil eww "%s")
+                                (".*" nil browse-url-default-browser "%s")
+                                (".*bbc.*" t "firefox" "about:reader?url=%s")
+                                (".*gnu.org.*" nil eww "%s")
                                 ))
   (setq browse-url-browser-function 'browse-rules-url)
 #+end_src
@@ -24,9 +24,9 @@ Make sure the folder containing browse-rules.el file is in your ~load-path~.
     (browse-url-browser-function 'browse-rules-url)
     (browse-rules '(
                                             ; "Regexp" external applicationorfunction format-string
-                    ("*" nil browse-url-default-browser "%s")
-                    ("*bbc*" t "firefox" "about:reader?url=%s")
-                    ("*gnu.org*" nil eww "%s")
+                    (".*" nil browse-url-default-browser "%s")
+                    (".*bbc.*" t "firefox" "about:reader?url=%s")
+                    (".*gnu.org.*" nil eww "%s")
                     )))
   #+end_src
   
