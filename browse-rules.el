@@ -7,8 +7,8 @@
 ;; Created: 28 May 2020
 ;; Version: 0.1
 ;; Package-Requires: ((emacs "24.3"))
-;; Keywords: startup
-;; URL: https://github.com/SidharthArya/modules.el
+;; Keywords: browser
+;; URL: https://github.com/SidharthArya/browse-rules.el
 
 ;; This program is free software; you can redistribute it and/or modify
 ;; it under the terms of the GNU General Public License as published by
@@ -27,17 +27,11 @@
 
 ;;; Commentary:
 
-;; modules.el package allows you to create custom configurations from .el files contained in a specific folder.
-;; These .el files can be loaded if needed using `modules-load` function.
-;; Or it can be loaded from the cli as `emacs --modules "space separated list of modules".
-;; You can also specify module configurations
+;; browse-rules.el package lets you define rules to browse urls based on regexp
 
 ;;; Code:
 (require 'browse-url)
-(defcustom browse-rules '(
-
-				 ("*" nil browse-url-default-browser "%s")
-                          )
+(defcustom browse-rules '(("*" nil browse-url-default-browser "%s"))
   "A set of rules to browse various urls.
 Each rule is a list of 4 elements.
 \('URL Regexp' 'External' 'Function/Program with arguments' 'Format String')
@@ -54,7 +48,7 @@ into something else"
   :type 'list)
 
 (defun browse-rules-url (url &optional _new-window)
-    "Based on the rules defined in browse-rules browse a particular URL."
+    "Based on the rules defined in `browse-rules' browse a particular URL."
     (interactive (browse-url-interactive-arg "URL: "))
     (let ((browse-pattern  nil))
     (dolist (pattern browse-rules)
