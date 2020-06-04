@@ -1,0 +1,32 @@
+#+TITLE: browse-rules.el
+#+AUTHOR: Sidharth Arya
+
+Rules to browse various urls.  
+
+* Basic Usage
+Make sure the folder containing browse-rules.el file is in your ~load-path~.
+#+begin_src emacs-lisp
+  (require 'browse-rules)
+
+  (setq elfeed-pattern-browse '(
+                                          ; "Regexp" external applicationorfunction format-string
+                                ("*" nil browse-url-default-browser "%s")
+                                ("*bbc*" t "firefox" "about:reader?url=%s")
+                                ("*gnu.org*" nil eww "%s")
+                                ))
+#+end_src
+
+** Use Package
+ If you already use ~use-package~. Then, the config below works, although this package is not yet part of melpa so, either have it manually be in the ~load-path~, or use straight.el.
+  #+begin_src emacs-lisp
+    (use-package browse-rules)
+    :custom
+    (elfeed-pattern-browse '(
+                                            ; "Regexp" external applicationorfunction format-string
+                             ("*" nil browse-url-default-browser "%s")
+                             ("*bbc*" t "firefox" "about:reader?url=%s")
+                             ("*gnu.org*" nil eww "%s")
+                             )))
+  #+end_src
+  
+The last matching rule gets the highest preference.
